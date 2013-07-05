@@ -768,8 +768,6 @@ and redirects."
    (log "o" ((t . "log/")) nil)
    (worker "w" ((t . "lib/workers/")) nil)
    (public "p" ((t . "public/")) nil)
-   (stylesheet "y" ((t . "public/stylesheets/.*")
-                    (t . "app/assets/stylesheets/.*")) nil)
    (sass "Y" ((t . "public/stylesheets/sass/.*")
               (t . "app/stylesheets/.*")) nil)
    (javascript "j" ((t . "public/javascripts/.*")
@@ -777,6 +775,10 @@ and redirects."
    (plugin "u" ((t . "vendor/plugins/")) nil)
    (mailer "M" ((t . "app/mailers/")) nil)
 
+   (stylesheet
+    "y"
+    ((t . "public/stylesheets/.css")
+     (t . "app/assets/stylesheets/.css.*")) nil)
    (layouts "y" ((t . "app/views/layouts/.*")) nil)
    (routes "o" ((t . "config/routes.rb")) nil)
    (configuration
