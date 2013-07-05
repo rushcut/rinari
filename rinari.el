@@ -684,6 +684,10 @@ and redirects."
      ("app/\\1$"                               . "spec/\\1_spec.rb")
      ("spec/views/\\1_spec.rb"                 . "app/views/\\1")
      ("spec/\\1_spec.rb"                       . "app/\\1.rb")
+     ("spec/lib/\\1_spec.rb"                   . "lib/\\1.rb")
+     ("lib/\\1.rb"                             . "spec/lib/\\1_spec.rb")
+     ("spec/javascripts/\\1_spec.js.*"         . "app/assets/javascripts/\\1.js.*")
+     ("app/assets/javascripts/\\1\\..*"        . "spec/javascripts/\\1_spec\\..*")
      (t                                        . "spec/.*"))
     t)
    (fixture
@@ -759,7 +763,6 @@ and redirects."
    (steps "S" ((t . "features/step_definitions/.*")) nil)
    (environment "e" ((t . "config/environments/")) nil)
    (application "a" ((t . "config/application.rb")) nil)
-   (configuration "n" ((t . "config/")) nil)
    (script "s" ((t . "script/")) nil)
    (lib "l" ((t . "lib/")) nil)
    (log "o" ((t . "log/")) nil)
@@ -773,6 +776,27 @@ and redirects."
                     (t . "app/assets/javascripts/.*")) nil)
    (plugin "u" ((t . "vendor/plugins/")) nil)
    (mailer "M" ((t . "app/mailers/")) nil)
+
+   (layouts "y" ((t . "app/views/layouts/.*")) nil)
+   (routes "o" ((t . "config/routes.rb")) nil)
+   (configuration
+    "n"
+    (
+     (t . "config/.*")
+     (t . "config/environments/.*")
+     (t . "config/environments/initializers/.*")
+     (t . "config/environments/locales/.*")
+     ) nil)
+
+   (ember-model "M" ((t . "app/assets/javascripts/models/.*")) nil)
+   (ember-controller "C" ((t . "app/assets/javascripts/controllers/.*")) nil)
+   (ember-routes "R" ((t . "app/assets/javascripts/router.js.*")) nil)
+   (ember-helper "H" ((t . "app/assets/javascripts/helpers/.*")) nil)
+   (ember-template "T" ((t . "app/assets/javascripts/templates/.*")) nil)
+   (ember-view "V" ((t . "app/assets/javascripts/views/.*")) nil)
+   (ember-store "S" ((t . "app/assets/javascripts/store.js.*")) nil)
+   (ember-all "P" ((t . "app/assets/javascripts/.*")) nil)
+
    (file-in-project "f" ((t . ".*")) nil)
    (by-context
     ";"
