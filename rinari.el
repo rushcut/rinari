@@ -198,7 +198,7 @@ leave this to the environment variables outside of Emacs.")
 Optional argument HOME is ignored."
   (let ((default-directory (or dir default-directory)))
     (when (file-directory-p default-directory)
-      (if (file-exists-p (expand-file-name "environment.rb" (expand-file-name "config")))
+      (if (file-exists-p (expand-file-name "Rakefile"))
           default-directory
         ;; regexp to match windows roots, tramp roots, or regular posix roots
         (unless (string-match "\\(^[[:alpha:]]:/$\\|^/[^\/]+:/?$\\|^/$\\)" default-directory)
@@ -684,8 +684,10 @@ and redirects."
      ("app/\\1$"                               . "spec/\\1_spec.rb")
      ("spec/views/\\1_spec.rb"                 . "app/views/\\1")
      ("spec/\\1_spec.rb"                       . "app/\\1.rb")
+     ("spec/\\1_spec.rb"                       . "lib/\\1.rb")
      ("spec/lib/\\1_spec.rb"                   . "lib/\\1.rb")
      ("lib/\\1.rb"                             . "spec/lib/\\1_spec.rb")
+     ("lib/\\1.rb"                             . "spec/\\1_spec.rb")
      ("spec/javascripts/\\1_spec.js.*"         . "app/assets/javascripts/\\1.js.*")
      ("app/assets/javascripts/\\1\\..*"        . "spec/javascripts/\\1_spec\\..*")
      (t                                        . "spec/.*"))
