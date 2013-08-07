@@ -683,15 +683,24 @@ and redirects."
     (("app/\\1\\.rb"                           . "spec/\\1_spec.rb")
      ("app/\\1$"                               . "spec/\\1_spec.rb")
      ("spec/views/\\1_spec.rb"                 . "app/views/\\1")
-     ("spec/\\1_spec.rb"                       . "app/\\1.rb")
-     ("spec/\\1_spec.rb"                       . "lib/\\1.rb")
-     ("spec/lib/\\1_spec.rb"                   . "lib/\\1.rb")
+     ("spec/models/\\1_spec.rb"                . "app/models/\\1.rb$")
+     ("spec/controllers/\\1_spec.rb"           . "app/controllers/\\1.rb$")
+     ("spec/helpers/\\1_spec.rb"               . "app/helpers/\\1.rb$")
+     ("spec/\\1_spec.rb"                       . "lib/\\1.rb$")
+     ("spec/lib/\\1_spec.rb"                   . "lib/\\1.rb$")
+     ("spec/integration/\\1_integration_spec.rb" . "lib/\\1.rb")
      ("lib/\\1.rb"                             . "spec/lib/\\1_spec.rb")
      ("lib/\\1.rb"                             . "spec/\\1_spec.rb")
      ("spec/javascripts/\\1_spec.js.*"         . "app/assets/javascripts/\\1.js.*")
      ("app/assets/javascripts/\\1\\..*"        . "spec/javascripts/\\1_spec\\..*")
-     (t                                        . "spec/.*"))
+     (t                                        . "spec/.*?rb"))
     t)
+   (rspec-integration
+    "i"
+    (("lib/\\1.rb"                               . "spec/integration/\\1_integration_spec.rb")
+     ("spec/integration/\\1_integration_spec.rb" . "lib/\\1.rb")
+     ("spec/integration/\\1_integration_spec.rb" . "lib/.*?/\\1.rb")
+     (t . "spec/integration/.*") nil))
    (fixture
     "x"
     (("app/models/\\1.rb"                      . "test/fixtures/\\1.yml")
@@ -791,6 +800,9 @@ and redirects."
      (t . "config/environments/initializers/.*")
      (t . "config/environments/locales/.*")
      ) nil)
+
+   (locale "L" ((t . "config/locales/")) nil)
+   (view-application "A" ((t . "app/views/application")) nil)
 
    (ember-model "M" ((t . "app/assets/javascripts/models/.*")) nil)
    (ember-controller "C" ((t . "app/assets/javascripts/controllers/.*")) nil)
